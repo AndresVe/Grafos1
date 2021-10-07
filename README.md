@@ -1,5 +1,6 @@
 # Grafos1
-Integrantes: 
+Integrantes:
+
 Lider de Proyecto:
 
 -Alexis Abarca Arias (alexis.abarcaa@utem.cl)
