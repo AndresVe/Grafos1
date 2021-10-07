@@ -417,12 +417,12 @@ function imprimircontarVertice(){
     var mcontarV= contarVertice(mAdyacencia);
     //contvertice.appendChild(drawMatriz(mcontar));
     if (tipo_grafo == "Dirigido"){
-        contV.textContent = (`la cantidad de vertices es:   [${mcontarV}]`);
+        contV.textContent = (`la cantidad de aristas es:   [${mcontarV}]`);
         contV.className = "alert alert-warning text-center mt-3 mx-3";
     }
     else{
         mcontarV= mcontarV/2
-        contV.textContent = (`la cantidad de vertices es:   [${mcontarV}]`);
+        contV.textContent = (`la cantidad de aristas es:   [${mcontarV}]`);
         contV.className = "alert alert-warning text-center mt-3 mx-3";
     }
 }
