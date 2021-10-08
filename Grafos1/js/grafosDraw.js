@@ -355,7 +355,7 @@
      }
      return Matriz_de_Peso;
  }
- 
+ // era contar arista
 function contarVertice(mAdyacencia) {
     var Matriz_aux = [];
     let contador=0;
@@ -409,7 +409,139 @@ function imprimirregion(){
     contregion.className = "alert alert-warning text-center mt-3 mx-3";
  }  
 
+ function rueda(mAdyacencia){
+    let tresAristas=0;
+    let central=0;
+    let cont=0;
+    let n=0;
+    if (mAdyacencia.length >= 4){
+       
+        for (let i = 0; i < mAdyacencia.length; i++){
+            
+            for (let j = 0; j < mAdyacencia.length; j++)
+            {
+                if (mAdyacencia[i][j]==1)
+                {
+                    cont+=1;
+                }
+            }
+            if (cont>=3)
+            {
+                tresAristas+=1;
+            }
+            if (cont==( mAdyacencia.length -1))
+            {
+                central+=1;
+            }
+        } 
+        if (central==1 && tresAristas==( mAdyacencia.length-1)){
+            return true;}
+        else{
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}
 
+ function imprimirrueda(){
+    //var tipo_grafo = document.querySelector("#tipoGrafo").value;
+    //const matrizCamino = document.querySelector("#matrizCam");
+    var mAdyacencia = MatrizAdyacencia();
+    const contR = document.querySelector("#crueda");
+    //var matriz_r = MatrizCaminos(mAdyacencia); /7 esto lo ponnia dentro de g_rueda
+    var mcontarR= rueda(mAdyacencia);
+    //var conexo = matrizConexa(matriz_c);
+     if (mcontarR==true) {
+        contR.textContent =  "el grafo es rueda :D !";
+        contR.className = "alert alert-warning text-center";
+     } else {
+        contR.textContent = "Su grafo no es rueda :V";
+        contR.className = "alert alert-warning text-center";
+     }
+    
+}
+
+function completo(mAdyacencia){
+    //var aux6 = vertices.length;
+    let completo=0;
+    let cont=0;
+    if (mAdyacencia.length >=1){      
+        for (let i = 0; i < mAdyacencia.length; i++) {
+            
+            for (let j = 0; j < mAdyacencia.length; j++){
+                if (i!=j){
+                    if (mAdyacencia[i][j]==1)
+                    {
+                        cont+=1;  //con k=4 este cont =12
+                    }
+                }
+                else// la diagonal
+                {
+                    if (mAdyacencia[i][j]==1)// como debe ser cero, si es uno es falso
+                    {
+                        return false;
+                    }
+                }
+            }
+            if (cont == (mAdyacencia.length -1 ))//aqui algo mal parece
+            {
+                completo+=1; 
+            }
+        }
+        if (completo == mAdyacencia.length)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+    
+}
+
+function imprimircompleto(){
+    var mAdyacencia = MatrizAdyacencia();
+    const contcompleto= document.querySelector("#ccompleto");
+    //var matriz_r = MatrizCaminos(mAdyacencia); /7 esto lo ponnia dentro de g_rueda
+    var mcontarC= completo(mAdyacencia);
+    //var conexo = matrizConexa(matriz_c);
+    if (mcontarC == true) {
+        contcompleto.textContent =  "el grafo es completo :D !";
+        contcompleto.className = "alert alert-warning text-center";
+    } else {
+        contcompleto.textContent = "Su grafo no es completo :V";
+        contcompleto.className = "alert alert-warning text-center";
+    }
+    
+}
+
+
+/*function imprimirConexo() {
+     var mAdyacencia = MatrizAdyacencia();
+     const matrizCamino = document.querySelector("#matrizCam");
+     var matriz_c = MatrizCaminos(mAdyacencia); estooooo
+     const saberCon = document.querySelector("#saberConexo");
+     var conexo = matrizConexa(matriz_c);
+     if (conexo) {
+         saberCon.textContent = "La matriz ingresada es Conexa :D !";
+         saberCon.className = "alert alert-warning text-center";
+     } else {
+         saberCon.textContent = "Su matriz no es Conexa :V";
+         saberCon.className = "alert alert-warning text-center";
+     }
+ }
+ */
+
+    
+
+// no era contar vertice era aristas xd
 function imprimircontarVertice(){
     var tipo_grafo = document.querySelector("#tipoGrafo").value;
     var mAdyacencia = MatrizAdyacencia();
